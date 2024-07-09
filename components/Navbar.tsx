@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import { SignedIn, UserButton } from "@clerk/nextjs";
+
+import MobileNav from "./MobileNav";
 
 const Navbar = () => {
   return (
@@ -10,14 +12,20 @@ const Navbar = () => {
           src="/icons/logo.svg"
           width={32}
           height={32}
-          alt="VC Logo"
-          className="mx-sm:size-10"
+          alt="yoom logo"
+          className="max-sm:size-10"
         />
         <p className="text-[26px] font-extrabold text-white max-sm:hidden">
           Meeting Meeting
         </p>
       </Link>
-      <div className=""></div>
+      <div className="flex-between gap-5">
+        <SignedIn>
+          <UserButton afterSignOutUrl="/sign-in" />
+        </SignedIn>
+
+        <MobileNav />
+      </div>
     </nav>
   );
 };
